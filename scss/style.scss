@@ -1,0 +1,869 @@
+@import "./nullstyle";
+@import "./fonts";
+@import "./mixins";
+@import "./variables";
+
+html {
+    scroll-behavior: smooth;
+    font-family: $standart-ff;
+}
+.container{
+    position: relative;
+    max-width: 1190px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+.title{
+    font-size: $title-fz;
+    color: $primary-color;
+    line-height: 130%;
+    font-weight: 400;
+    @media screen and (max-width:768px) {
+        font-size: $title-fz_mobile;
+    }
+}
+.text{
+    font-size: $standart-fz;
+    color: $primary-color;
+    font-weight: 400;
+    line-height: 130%;
+    @media screen and (max-width:768px) {
+        font-size: $standart-fz_mobile;
+    }
+}
+.header{
+    background: linear-gradient(105.48deg, #153D58 5.6%, #2C2251 94.47%);
+    &__header{
+        max-width: 1190px;
+        @include flex(space-between);
+        margin: 0 auto;
+        padding: 20px 20px;
+    }
+    &__logo{
+        font-size: 24px;
+        color: $contrast-color;
+        font-weight: 400;
+    }
+    &__menu{
+        max-width: 380px;
+        width: 100%;
+        @include flex(space-between);
+        @include transition;
+    }
+    &__link{
+        font-size: $standart-fz;
+        color: $contrast-color;
+        font-weight: 400;
+        &:hover{
+            color: $yellow;
+        }
+    }
+    &__main{
+        padding: 150px 0 200px 0;
+        text-align: center;
+    }
+    &__title{
+        font-size: $primary-title-fz;
+        color: $contrast-color;
+        font-weight: 700;
+        margin-bottom: 35px;
+        line-height: 130%;
+    }
+    .text{
+        max-width: 840px;
+        margin: 0 auto;
+        color: $contrast-color;
+        line-height: 130%;
+        margin-bottom: 60px;
+    }
+    &__button{
+        font-size: $standart-fz;
+        color: $contrast-color;
+        font-weight: 400;
+        padding: 10px 30px;
+        border: 2px solid $contrast-color;
+        border-radius: 30px;
+        &:hover{
+            color: $yellow;
+            border-color: $yellow;
+        }
+    }
+    .burger-btn{
+        display: none;
+        z-index: 10;
+        position: relative;
+        width: 30px;
+		height: 20px;
+        cursor: pointer;
+		> span {
+		    position: absolute;
+            background-color: $contrast-color;
+		    width: 100%;
+		    height: 3px;
+            border-radius: 18px;
+		    left: 0;
+		    top: 9px;
+		    @include transition;
+		}
+		&:after,
+		&:before {
+		    content: "";
+		    position: absolute;
+            background-color: $contrast-color;
+		    width: 100%;
+		    height: 3px;
+            border-radius: 18px;
+		    left: 0;
+		    @include transition;
+		}
+		&:before {
+		    top: 20px;
+		}
+		&:after {
+		    bottom: 20px;
+		}
+		&_active {
+		    span {
+			    opacity: 0;
+		    }
+		    &:before {
+			    transform: rotate(45deg);
+			    top: 9px;
+		    }
+		    &:after {
+			    transform: rotate(-45deg);
+			    bottom: 9px;
+		    }
+		}
+    }
+    @media screen and (max-width:768px){
+        .burger-btn{
+            display: block;
+        }
+        &__menu{
+            position: absolute;
+            max-width: none;
+            text-align: center;
+            z-index: 2;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            padding: 70px 20px 20px 20px;
+            background: linear-gradient(92.91deg, #4C7ED7 3.6%, #5ECADE 100.65%);
+            @include flex($flex-direction: column);
+            &_active{
+                top: 0;
+            }
+        }
+        &__link{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        &__main{
+            padding: 70px 20px 200px 20px;
+        }
+        &__title{
+            font-size: $primary-title-fz_mobile;
+        }
+    }
+}
+
+//                                  PARTNERS
+
+.partners{
+    padding: 30px 10px;
+    width: 100%;
+    background: $contrast-color;
+    @include flex($flex-direction: column);
+    box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    transform: translateY(-50%);
+    .title{
+        margin-bottom: 25px;
+    }
+    &__content{
+        width: 100%;
+        @include flex(space-around, $flex-wrap: wrap);
+    }
+    @media screen and (max-width:768px){
+        padding-bottom: 5px;
+        &__content{
+            img{
+                margin-bottom: 25px;
+                max-width: 150px;
+                width: 100%;
+            }
+        }
+    }
+    @media screen and (max-width:500px){
+        &__content{
+            img{
+                max-width: 100px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+//                                  SERVICES
+
+.services{
+    text-align: center;
+    padding-bottom: 180px;
+    .title{
+        margin-bottom: 10px;
+
+    }
+    .text{
+        color: $primary-color;
+        max-width: 850px;
+        margin: 0 auto 80px auto;
+    }
+    &__content{
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+        @include flex(space-between, $flex-wrap: wrap);
+    }
+    &__card{
+        text-align: center;
+        flex-basis: 45%;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        padding: 10px 0;
+        margin-bottom: 70px;
+    }
+    &__circle{
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(-50%);
+        max-height: 270px;
+        height: 100%;
+        max-width: 270px;
+        width: 100%;
+        border-radius: 200px;
+        background: linear-gradient(191.92deg, #FF0566 3.58%, #FA7236 88.13%);
+    }
+    &__sub-title{
+        font-size: $sub-title-fz;
+        color: $red;
+        margin-bottom: 20px;
+    }
+    ul{
+        max-width: 280px;
+        margin-left: auto;
+        text-align: left;
+    }
+    li{
+        font-size: $standart-fz;
+        color: $primary-color;
+        margin-bottom: 20px;
+        &::before{
+            content: "";
+            display: inline-block;
+            border-radius: 20px;
+            width: 10px;
+            height: 10px;
+            margin-right: 10px;
+            background: $red;
+        }
+    }
+    .blue{
+        .services__circle{
+            background: linear-gradient(191.92deg, #4A77D6 3.58%, #5DC9DD 88.13%);
+        }
+        .services__sub-title{
+            color: $blue;
+        }
+        li{
+            &::before{
+                background: $blue;
+            }
+        }
+    }
+    .orange{
+        .services__circle{
+            background: linear-gradient(191.92deg, #FF7B02 3.58%, #FFCB52 88.13%);
+        }
+        .services__sub-title{
+            color: $orange;
+        }
+        li{
+            &::before{
+                background: $orange;
+            }
+        }
+    }
+    .purple{
+        .services__circle{
+            background: linear-gradient(191.92deg, #5C27FE 3.58%, #C165DD 88.13%);
+        }
+        .services__sub-title{
+            color: $purple;
+        }
+        li{
+            &::before{
+                background: $purple;
+            }
+        }
+    }
+    @media screen and (max-width:980px){
+        &__circle{
+            max-width: 80px;
+        }
+    }
+    @media screen and (max-width:768px){
+        padding-bottom: 20px;
+        .text{
+            margin-bottom: 50px;
+        }
+        &__content{
+            justify-content: space-around;
+        }
+        &__circle{
+            max-width: 270px;
+        }
+        &__sub-title{
+            font-size: $sub-title-fz_mobile;
+        }
+        li{
+            font-size: $standart-fz_mobile;
+        }
+        &__card{
+            max-width: 450px;
+            width: 100%;
+            flex-basis: unset;
+        }
+    }
+    @media screen and (max-width:500px){
+        padding-bottom: 50px;
+        &__content{
+            padding: 0;
+        }
+        &__card{
+            max-width: 240px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        &__circle{
+            max-width: 80px;
+        }
+        ul{
+            margin-left: 50px;
+        }
+    }
+}
+
+//                                  PRICE
+
+.price{
+    padding: 40px 0 85px 0;
+    text-align: center;
+    .title{
+        margin-bottom: 10px;
+    }
+    .text{
+        color: $primary-color;
+        max-width: 850px;
+        margin: 0 auto 70px auto;
+    }
+    &__content{
+        width: 100%;
+        @include flex(space-around, $flex-wrap: wrap);
+    }
+    &__card{
+        max-width: 300px;
+        width: 100%;
+        padding: 35px 0;
+        margin-bottom: 50px;
+        background: linear-gradient(155.43deg, #FF1360 0%, #FB7B44 108.07%);
+        box-shadow: 0px 4px 25px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+    }
+    &__sub-title{
+        text-align: center;
+        font-size: $sub-title-fz;
+        color: $contrast-color;
+        font-weight: 400;
+        margin-bottom: 15px;
+    }
+    ul{
+        margin-top: 25px;
+    }
+    li{
+        font-size: $standart-fz;
+        color: $contrast-color;
+        margin-bottom: 10px;
+        &::before{
+            content: "";
+            display: inline-block;
+            border-radius: 20px;
+            width: 10px;
+            height: 10px;
+            margin-right: 10px;
+            background: $contrast-color;
+        }
+    }
+    .orange{
+        background: linear-gradient(155.43deg, #FF850C 0%, #FFC950 108.07%);
+    }
+    .blue{
+        background: linear-gradient(155.43deg, #4D80D7 0%, #5DC6DD 108.07%);
+    }
+    @media screen and (max-width:768px){
+        padding-bottom: 50px;
+        &__card{
+            max-width: 200px;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+        &__sub-title{
+            font-size: $sub-title-fz_mobile;
+        }
+        li{
+            font-size: $standart-fz_mobile;
+        }
+    }
+}
+
+//                                  Q&A
+
+.question{
+    padding: 40px 0 80px 0;
+    text-align: center;
+    .title{
+        margin-bottom: 10px;
+    }
+    .text{
+        color: $primary-color;
+        max-width: 850px;
+        margin: 0 auto 70px auto;
+    }
+    &__content{
+        max-width: 940px;
+        margin: 0 auto;
+        padding: 0 20px;
+        @include flex(space-between, $flex-wrap: wrap);
+    }
+    &__card{
+        flex-basis: 45%;
+        text-align: left;
+        margin-bottom: 50px;
+        .text{
+            margin-bottom: 0;
+        }
+    }
+    &__sub-title{
+        font-size: $sub-title-fz;
+        color: $primary-color;
+        margin-bottom: 20px;
+    }
+    @media screen and (max-width:768px){
+        padding-bottom: 50px;
+        &__content{
+            padding: 0;
+        }
+        &__card{
+            margin-bottom: 30px;
+        }
+        &__sub-title{
+            font-size: $sub-title-fz_mobile;
+        }
+    }
+    @media screen and (max-width:500px){
+        padding-bottom: 50px;
+        &__content{
+            justify-content: space-around;
+        }
+        &__card{
+            flex-basis: 90%;
+        }
+    }
+}
+
+//                                  ABOUT US
+
+.about-us{
+    padding: 40px 0 5px 0;
+    text-align: center;
+    .title{
+        margin-bottom: 10px;
+    }
+    .text{
+        color: $primary-color;
+        max-width: 850px;
+        margin: 0 auto 140px auto;
+    }
+    &__block{
+        @include flex(space-around, $flex-wrap: wrap);
+        width: 100%;
+        margin-bottom: 100px;
+    }
+    &__img{
+        max-width: 450px;
+        width: 100%;
+        position: relative;
+    }
+    img{
+        width: 100%;
+    }
+    &__rectangle1, &__rectangle2{
+        max-width: 450px;
+        width: 100%;
+        max-height: 300px;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+    }
+    &__rectangle1{
+        bottom: 25px;
+        right: 30px;
+        background: #4D81D7;
+    }
+    &__rectangle2{
+        top: 25px;
+        left: 30px;
+        background: #5DC5DD;
+    }
+    &__description{
+        text-align: left;
+        max-width: 415px;
+        width: 100%;
+        .text{
+            margin-bottom: 0;
+        }
+    }
+    &__sub-title{
+        font-size: $sub-title-fz;
+        color: $blue;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+    .orange{
+        .about-us__rectangle1{
+            background: #FF840B;
+        }
+        .about-us__rectangle2{
+            background: #FFC84F;
+        }
+    }
+    .orange{
+        .about-us__rectangle1{
+            background: #652DFC;
+        }
+        .about-us__rectangle2{
+            background: #BF64DE;
+        }
+    }
+    @media screen and (max-width:904px){
+        &__img{
+            margin-bottom: 50px;
+        }
+        .orange{
+            .about-us__img{
+                margin-bottom: 0;
+            }
+            .about-us__description{
+                margin-bottom: 50px;
+            }
+        }
+    }
+    @media screen and (max-width:768px){
+        .text{
+            margin-bottom: 70px;
+        }
+        &__block{
+            flex-direction: column;
+            margin-bottom: 40px;
+        }
+        .orange{
+            flex-direction: column-reverse;
+            .about-us__img{
+                margin-bottom: 50px;
+            }
+            .about-us__description{
+                margin-bottom: 0;
+            }
+        }
+        &__img{
+            max-width: 300px;
+        }
+        &__description{
+            text-align: center;
+            .text{
+                margin-bottom: 0;
+            }
+        }
+        &__sub-title{
+            font-size: $sub-title-fz_mobile;
+        }
+    }
+    @media screen and (max-width:400px){
+        &__img{
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+        &__rectangle1{
+            bottom: 15px;
+            right: 20px;
+        }
+        &__rectangle2{
+            top: 15px;
+            left: 20px;
+        }
+    }
+}
+
+//                                  COMPANY
+
+.company{
+    padding: 50px 0 170px 0;
+    background: linear-gradient(92.91deg, #4C7ED7 3.6%, #5ECADE 100.65%);
+    text-align: center;
+    &__title{
+        font-size: $primary-title-fz;
+        color: $contrast-color;
+        font-weight: 200;
+        max-width: 870px;
+        margin: 0 auto;
+    }
+    @media screen and (max-width:768px){
+        &__title{
+            max-width: 500px;
+            font-size: $primary-title-fz_mobile;
+        }
+    }
+}
+
+//                                  RAITING
+
+.rating{
+    position: relative;
+    max-width: 380px;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    &__wrapper{
+        width: 100%;
+        background: $contrast-color;
+        padding: 15px 0 35px 0;
+        @include flex($flex-direction: column);
+        text-align: center;
+        box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+    }
+    &__sub-title{
+        max-width: 240px;
+        font-size: $sub-title-fz;
+        color: $primary-color;
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
+    &__mark{
+        font-size: $primary-title-fz;
+        color: $primary-color;
+        font-weight: 200;
+        margin-bottom: 15px;
+    }
+    &__stars{
+        max-width: 210px;
+        width: 100%;
+        @include flex(space-between);
+
+    }
+    &__block{
+        position: absolute;
+        max-width: 320px;
+        width: 100%;
+        max-height: 270px;
+        height: 100%;
+        top: 15px;
+        left: 28px;
+        z-index: -1;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+    }
+    @media screen and (max-width:768px){
+        max-width: 280px;
+        &__sub-title{
+            max-width: 200px;
+            font-size: $sub-title-fz_mobile;
+        }
+        &__mark{
+            font-size: $primary-title-fz_mobile;
+        }
+        &__stars{
+            max-width: 160px;
+            img{
+                width: 26px;
+            }
+        }
+        &__block{
+            max-width: 220px;
+        }
+    }
+    @media screen and (max-width:400px){
+        max-width: 240px;
+        &__block{
+            max-width: 180px;
+        }
+    }
+}
+
+//                                  TEAM
+
+.team{
+    text-align: center;
+    .title{
+        margin-bottom: 10px;
+    }
+    .text{
+        color: $primary-color;
+        max-width: 850px;
+        margin: 0 auto 35px auto;
+    }
+    &__content{
+        width: 99%;
+        @include flex(space-between, $flex-wrap: wrap);
+    }
+    &__card{
+        max-width: 230px;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0 35px 0;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 25px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 15px;
+        margin-bottom: 60px;
+        .text{
+            margin-bottom: 0;
+        }
+    }
+    &__profile{
+        margin-bottom: 15px;
+    }
+    &__sub-title{
+        font-size: $sub-title-fz;
+        color: $primary-color;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+    @media screen and (max-width:768px){
+        &__content{
+            width: 100%;
+            justify-content: space-around;
+        }
+        &__card{
+            max-width: 150px;
+        }
+        &__sub-title{
+            font-size: $sub-title-fz_mobile;
+        }
+    }
+    @media screen and (max-width:500px){
+        &__card{
+            max-width: 100px;
+        }
+        &__profile{
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
+
+//                                  FOOTER
+
+.footer{
+    padding: 50px 0;
+    background-color: $footer-color;
+    &__wrapper{
+        max-width: 1190px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+        @include flex(space-between, $align-items: baseline, $flex-wrap: wrap);
+    }
+    &__logo{
+        font-size: $title-fz;
+        color: $contrast-color;
+    }
+    &__text{
+        color: $contrast-color;
+        margin-top: 25px;
+        margin-bottom: 32px;
+        max-width: 300px;
+    }
+    &__networks{
+        max-width: 150px;
+        @include flex(space-between);
+    }
+    &__title{
+        font-size: $title-fz;
+        color: $contrast-color;
+        margin-bottom: 25px;
+    }
+    &__menu{
+        display: flex;
+        flex-direction: column;
+    }
+    &__link{
+        margin-bottom: 40px;
+        font-size: $standart-fz;
+        color: $contrast-color;
+        &:hover{
+            color: $yellow;
+        }
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    &__email, &__phone{
+        @include flex($justify-content: normal);
+        p{
+            font-size: $big-fz;
+            color: $contrast-color;
+            margin-bottom: 0;
+            margin-left: 15px;
+        }
+    }
+    &__email{
+        margin-bottom: 20px;
+    }
+    &__phone{
+        padding-left: 5px;
+    }
+    @media screen and (max-width:768px){
+        padding: 50px 0;
+        &__wrapper{
+            justify-content: space-around;
+        }
+        &__title, &__logo{
+            font-size: $title-fz_mobile;
+        }
+        &__link:last-child{
+            margin-bottom: 40px;
+        }
+    }
+    @media screen and (max-width:500px){
+        &__wrapper{
+            flex-direction: column;
+        }
+        &__content, &__contact, &__navigation{
+            margin: 0 auto;
+        }
+        &__content{
+            margin-bottom: 40px;
+        }
+        &__navigation, &__contact{
+            max-width: 300px;
+            width: 100%;
+        }
+        &__text, p{
+            font-size: $standart-fz_mobile;
+        }
+    }
+}
