@@ -387,7 +387,7 @@ html {
     &__card{
         max-width: 300px;
         width: 100%;
-        padding: 35px 0;
+        padding: 35px 20px;
         margin-bottom: 50px;
         background: linear-gradient(155.43deg, #FF1360 0%, #FB7B44 108.07%);
         box-shadow: 0px 4px 25px 10px rgba(0, 0, 0, 0.15);
@@ -428,7 +428,7 @@ html {
         &__card{
             max-width: 200px;
             margin-bottom: 30px;
-            padding: 20px 0;
+            padding: 20px 10px;
         }
         &__sub-title{
             font-size: $sub-title-fz_mobile;
