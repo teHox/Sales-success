@@ -241,7 +241,7 @@ html {
         top: 0;
         left: 0;
         transform: translateX(-50%);
-        max-height: 270px;
+        max-height: 290px;
         height: 100%;
         max-width: 270px;
         width: 100%;
@@ -252,6 +252,8 @@ html {
         font-size: $sub-title-fz;
         color: $red;
         margin-bottom: 20px;
+        margin-left: 120px;
+        text-align: left;
     }
     ul{
         max-width: 280px;
@@ -270,6 +272,9 @@ html {
             height: 10px;
             margin-right: 10px;
             background: $red;
+        }
+        &:last-child{
+            margin-bottom: 0;
         }
     }
     .blue{
